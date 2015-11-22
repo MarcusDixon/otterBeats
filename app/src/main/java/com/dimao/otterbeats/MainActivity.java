@@ -7,6 +7,8 @@ import android.util.Log;
 import android.widget.Button;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.ToggleButton;
 
 import com.spotify.sdk.android.player.Spotify;
 import com.spotify.sdk.android.authentication.AuthenticationClient;
@@ -72,7 +74,7 @@ public class MainActivity extends Activity implements
             public void onClick(View arg0) {
                 String real = SPOTIFY_URI_BEG + "1B9o7mER9kfxbmsRH9ko4z";
                 mPlayer.play(real);
-                mPlayer.setShuffle(true);
+                //mPlayer.setShuffle(true);
 
             }
 
@@ -110,7 +112,7 @@ public class MainActivity extends Activity implements
         });
     }
 
-    public void addListenerOnButton4() {
+/*    public void addListenerOnButton4() {
 
         button = (Button) findViewById(R.id.pauseButton);
 
@@ -141,6 +143,47 @@ public class MainActivity extends Activity implements
             }
 
         });
+    }*/
+
+    public void addListenerOnButton4() {
+
+        ToggleButton toggle = (ToggleButton) findViewById(R.id.playPauseButton);
+        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    mPlayer.pause();
+                } else {
+                    mPlayer.resume();
+                }
+            }
+        });
+    }
+
+    public void addListenerOnButton5() {
+
+        ToggleButton toggle = (ToggleButton) findViewById(R.id.repeatButton);
+        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    mPlayer.setRepeat(true);
+                } else {
+                    mPlayer.setRepeat(false);
+                }
+            }
+        });
+    }
+    public void addListenerOnButton6() {
+
+        ToggleButton toggle = (ToggleButton) findViewById(R.id.shuffleButton);
+        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    mPlayer.setShuffle(true);
+                } else {
+                    mPlayer.setShuffle(false);
+                }
+            }
+        });
     }
 
     @Override
@@ -158,7 +201,8 @@ public class MainActivity extends Activity implements
                     public void onInitialized(Player player) {
                         mPlayer.addConnectionStateCallback(MainActivity.this);
                         mPlayer.addPlayerNotificationCallback(MainActivity.this);
-                        //mPlayer.play("spotify:user:spotify:playlist:1B9o7mER9kfxbmsRH9ko4z");
+                        mPlayer.play("spotify:user:spotify:playlist:1B9o7mER9kfxbmsRH9ko4z");
+                        mPlayer.pause();
                     }
 
                     @Override

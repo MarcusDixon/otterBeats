@@ -15,7 +15,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mood Tunes!"
+        android:text="Otter Beats!"
         android:id="@+id/textView" />
 
     <Button
@@ -24,9 +24,8 @@
         android:layout_height="wrap_content"
         android:text="Skip"
         android:id="@+id/skipButton"
-        android:layout_below="@+id/playButton"
-        android:layout_toEndOf="@+id/pauseButton"
-        android:layout_marginTop="37dp" />
+        android:layout_alignTop="@+id/playPauseButton"
+        android:layout_alignParentEnd="true" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -34,7 +33,8 @@
         android:layout_height="wrap_content"
         android:text="Happy"
         android:id="@+id/happyButton"
-        android:layout_alignParentTop="true"
+        android:layout_marginTop="123dp"
+        android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -43,19 +43,18 @@
         android:layout_height="wrap_content"
         android:text="Prev"
         android:id="@+id/prevButton"
-        android:layout_alignBaseline="@+id/skipButton"
-        android:layout_alignBottom="@+id/skipButton"
-        android:layout_toEndOf="@+id/textView" />
+        android:layout_alignTop="@+id/playPauseButton"
+        android:layout_alignEnd="@+id/textView" />
 
-    <Button
+<!--    <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Pause"
         android:id="@+id/pauseButton"
-        android:layout_marginTop="81dp"
-        android:layout_below="@+id/skipButton"
-        android:layout_alignStart="@+id/playButton" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/playButton"
+        android:layout_marginBottom="65dp" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -63,15 +62,39 @@
         android:layout_height="wrap_content"
         android:text="Play"
         android:id="@+id/playButton"
-        android:layout_below="@+id/happyButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="51dp" />
+        android:layout_above="@+id/prevButton"
+        android:layout_centerHorizontal="true" />-->
 
-    <ProgressBar
+    <ToggleButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/progressBar"
+        android:text="Repeat"
+        android:id="@+id/repeatButton"
+        android:textOff="Repeat All"
+        android:textOn="Repeat All"
+        android:layout_alignTop="@+id/shuffleButton"
+        android:layout_toStartOf="@+id/playPauseButton" />
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Shuffle"
+        android:id="@+id/shuffleButton"
+        android:textOff="Shuffle"
+        android:textOn="Shuffle"
+        android:layout_marginBottom="55dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="69dp" />
+        android:layout_toEndOf="@+id/playPauseButton" />
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="playPause"
+        android:id="@+id/playPauseButton"
+        android:textOff="Pause"
+        android:textOn="Play"
+        android:layout_marginBottom="90dp"
+        android:layout_above="@+id/shuffleButton"
+        android:layout_alignStart="@+id/happyButton" />
+
 </RelativeLayout>
