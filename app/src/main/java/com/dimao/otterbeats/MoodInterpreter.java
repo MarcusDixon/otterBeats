@@ -13,7 +13,7 @@ public class MoodInterpreter {
 
     private int mode = 0;
     //1 = keep mood      2 = elevate mood
-    private int initMood;                   //initial mood
+    private int initMood = 0;                   //initial mood
     private int currentMood;                //recent mood
     private int lastMood;                   //last mood
 
@@ -63,8 +63,10 @@ public class MoodInterpreter {
     }
 
     public void setInitMood(int newMood){
-        initMood = newMood;
-        lastMood = newMood;
+        if(newMood > 0 && newMood < 5) {
+            if (initMood == 0) {initMood = newMood;}
+            lastMood = newMood;
+        }
     }
 
     public void setCurrentMood(int newMood){
