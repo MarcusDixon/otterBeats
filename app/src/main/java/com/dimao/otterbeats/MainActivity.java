@@ -218,6 +218,7 @@ public class MainActivity extends Activity implements
         super.onDestroy();
     }
 
+    /*
     void connect() {
 
         socket = new IOSocket("http://aipservers.com:3001", new MessageCallback() {
@@ -257,4 +258,10 @@ public class MainActivity extends Activity implements
 
         socket.connect();
     }
+    */
+
+    void connect(){
+
+    }
+
 }
