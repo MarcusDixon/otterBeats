@@ -12,7 +12,7 @@ public class MoodInterpreter {
 
     private Context context = null;
 
-    private int mode = 0;
+    private int mode = 1;
     //1 = keep mood      2 = elevate mood
     private int initMood = 1;                   //initial mood
     private int currentMood = 1;                //recent mood
@@ -71,6 +71,7 @@ public class MoodInterpreter {
     }
 
     public void setCurrentMood(int newMood){
+        Log.d("MoodInterpreter", "got new mood " + newMood);
         if(newMood > 0 && newMood < 5){
             lastMood = currentMood;
             currentMood = newMood;
@@ -124,7 +125,7 @@ public class MoodInterpreter {
 
     public String maintainMood(){
         String choice = "";
-        if(currentMood == lastMood){
+        if(currentMood == initMood){
             //play same station
         }
         else{
