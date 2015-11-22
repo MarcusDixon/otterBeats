@@ -31,6 +31,8 @@ public class MainActivity extends Activity implements
     // TODO: Replace with your redirect URI
     private static final String REDIRECT_URI = "moodtunes://callback";
 
+    private static final String SPOTIFY_URI_BEG = "spotify:user:spotify:playlist:";
+
     // Request code that will be passed together with authentication result to the onAuthenticationResult callback
     // Can be any integer
     private static final int REQUEST_CODE = 1337;
@@ -68,8 +70,8 @@ public class MainActivity extends Activity implements
 
             @Override
             public void onClick(View arg0) {
-
-                mPlayer.play("spotify:user:spotify:playlist:1B9o7mER9kfxbmsRH9ko4z");
+                String real = SPOTIFY_URI_BEG + "1B9o7mER9kfxbmsRH9ko4z";
+                mPlayer.play(real);
                 mPlayer.setShuffle(true);
 
             }
@@ -132,8 +134,10 @@ public class MainActivity extends Activity implements
 
             @Override
             public void onClick(View arg0) {
-                if(musicPaused)
+                if(musicPaused) {
                     mPlayer.resume();
+                    musicPaused = false;
+                }
             }
 
         });
