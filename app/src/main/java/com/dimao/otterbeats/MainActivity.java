@@ -42,10 +42,6 @@ public class MainActivity extends Activity implements
 
     private Player mPlayer;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 48787de2eaac49f5290ebbf55a44c74df50cde67
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,12 +61,8 @@ public class MainActivity extends Activity implements
         addListenerOnButton5();
         addListenerOnButton6();
         addListenerOnButton7();
-<<<<<<< HEAD
-
-
-=======
         MoodInterpreter.getInstance(getApplicationContext());
->>>>>>> 48787de2eaac49f5290ebbf55a44c74df50cde67
+
         connect();
     }
 
