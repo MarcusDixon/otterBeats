@@ -41,8 +41,6 @@ public class MainActivity extends Activity implements
 
     private Player mPlayer;
 
-    Button button;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,13 +58,15 @@ public class MainActivity extends Activity implements
         addListenerOnButton3();
         addListenerOnButton4();
         addListenerOnButton5();
+        addListenerOnButton6();
+        addListenerOnButton7();
 
         connect();
     }
 
     public void addListenerOnButton1() {
 
-        button = (Button) findViewById(R.id.happyButton);
+        Button button = (Button) findViewById(R.id.happyButton);
 
         button.setOnClickListener(new OnClickListener() {
 
@@ -83,7 +83,7 @@ public class MainActivity extends Activity implements
 
     public void addListenerOnButton2() {
 
-        button = (Button) findViewById(R.id.skipButton);
+        Button button = (Button) findViewById(R.id.skipButton);
 
         button.setOnClickListener(new OnClickListener()  {
 
@@ -99,7 +99,7 @@ public class MainActivity extends Activity implements
 
     public void addListenerOnButton3() {
 
-        button = (Button) findViewById(R.id.prevButton);
+        Button button = (Button) findViewById(R.id.prevButton);
 
         button.setOnClickListener(new OnClickListener() {
 
@@ -172,6 +172,20 @@ public class MainActivity extends Activity implements
             }
         });
     }
+    public void addListenerOnButton7() {
+
+        ToggleButton toggle = (ToggleButton) findViewById(R.id.elevateMaintainButton);
+        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    //elevate
+                } else {
+                    //maintain
+                }
+            }
+        });
+    }
+
     public void addListenerOnButton6() {
 
         ToggleButton toggle = (ToggleButton) findViewById(R.id.shuffleButton);
