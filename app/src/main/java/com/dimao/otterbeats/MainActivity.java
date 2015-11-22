@@ -24,7 +24,6 @@ public class MainActivity extends Activity implements
         PlayerNotificationCallback, ConnectionStateCallback {
 
     private IOSocket socket;
-    private boolean musicPaused = false;
 
     // TODO: Replace with your client ID
     private static final String CLIENT_ID = "25076b93d71740f1975cd641cf486e9a";
@@ -118,7 +117,6 @@ public class MainActivity extends Activity implements
             public void onClick(View arg0) {
 
                 mPlayer.pause();
-                musicPaused = true;
             }
 
         });
@@ -132,8 +130,8 @@ public class MainActivity extends Activity implements
 
             @Override
             public void onClick(View arg0) {
-                if(musicPaused)
-                    mPlayer.resume();
+
+                mPlayer.resume();
             }
 
         });
