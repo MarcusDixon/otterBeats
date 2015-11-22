@@ -280,7 +280,7 @@ public class MainActivity extends Activity implements
         super.onDestroy();
     }
 
-    /*
+
     void connect() {
 
         socket = new IOSocket("http://aipservers.com:3001", new MessageCallback() {
@@ -303,8 +303,22 @@ public class MainActivity extends Activity implements
             @Override
             public void on(String event, JSONObject... data) {
 
-                Log.i("kkkk", event);
-
+                Log.i("logging", event);
+                int temp = 0;
+                switch (event){
+                    case "excitement": temp = 1;
+                        break;
+                    case "engagement": temp = 2;
+                        break;
+                    case "bored": temp = 3;
+                        break;
+                    case "frustration": temp = 4;
+                        break;
+                    case "meditation": temp = 5;
+                        break;
+                }
+                MoodInterpreter.getInstance().setInitMood(temp);
+                MoodInterpreter.getInstance().setCurrentMood(temp);
             }
 
             @Override
@@ -320,8 +334,9 @@ public class MainActivity extends Activity implements
 
         socket.connect();
     }
-    */
 
+
+    /*
     void connect(){
         String initEm = FakeEmotions.getInstance().getStartingEmotion();
         int temp = 0;
@@ -339,5 +354,5 @@ public class MainActivity extends Activity implements
         }
         MoodInterpreter.getInstance().setInitMood(temp);
     }
-    
+    */
 }
