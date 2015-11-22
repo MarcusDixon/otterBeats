@@ -41,7 +41,10 @@ public class MainActivity extends Activity implements
 
     private Player mPlayer;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 15459b0028b98283e7bbb07eef33485f5aaf4d43
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +63,10 @@ public class MainActivity extends Activity implements
         addListenerOnButton4();
         addListenerOnButton5();
         addListenerOnButton6();
+<<<<<<< HEAD
+=======
+        addListenerOnButton7();
+>>>>>>> 15459b0028b98283e7bbb07eef33485f5aaf4d43
 
         connect();
     }
@@ -172,6 +179,20 @@ public class MainActivity extends Activity implements
             }
         });
     }
+    public void addListenerOnButton7() {
+
+        ToggleButton toggle = (ToggleButton) findViewById(R.id.elevateMaintainButton);
+        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    //elevate
+                } else {
+                    //maintain
+                }
+            }
+        });
+    }
+
     public void addListenerOnButton6() {
 
         ToggleButton toggle = (ToggleButton) findViewById(R.id.shuffleButton);
