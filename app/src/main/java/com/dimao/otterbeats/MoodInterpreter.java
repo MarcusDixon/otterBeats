@@ -17,6 +17,28 @@ public class MoodInterpreter {
     private int currentMood;                //recent mood
     private int lastMood;                   //last mood
 
+    private String[] excitedStations = {"1R2iL5hYKBrKy32T58CUUI", "6Qf2sXTjlH3HH30Ijo6AUp"
+                        , "1h90L3LP8kAJ7KGjCV2Xfd","1B9o7mER9kfxbmsRH9ko4z" ,"0kVaFpvoi0O4IbyJyEZckU"
+                        , "1vfys0yYhZEyJ9yvnULyM2"};
+    private int exCtr = 0;
+
+    private String[] engagedStations = {"1R2iL5hYKBrKy32T58CUUI", "6Qf2sXTjlH3HH30Ijo6AUp"
+            , "1h90L3LP8kAJ7KGjCV2Xfd" ,"0kVaFpvoi0O4IbyJyEZckU", "1vfys0yYhZEyJ9yvnULyM2"};
+    private int engCtr = 0;
+
+    private String[] boredStations = {"3fCn2nqmX6ZnYUe9uoty98", "1oXl0OHlE1mPDChMa8Y0Ax"
+            , "63dDpdoVHvx5RkK87g4LKk"};
+    private int borCtr = 0;
+
+    private String[] frustratedStations = {"1R2iL5hYKBrKy32T58CUUI", "6Qf2sXTjlH3HH30Ijo6AUp"
+            , "1h90L3LP8kAJ7KGjCV2Xfd" ,"6cdV0hVW2suJaMOxzwE46S", "1vfys0yYhZEyJ9yvnULyM2"
+            , "5Z9xJvDtHpB6m5zHgJC5zR"};
+    private int fruCtr = 0;
+
+    private String[] calmStations = {"3fCn2nqmX6ZnYUe9uoty98", "1oXl0OHlE1mPDChMa8Y0Ax"
+            , "63dDpdoVHvx5RkK87g4LKk" ,"3hpgM1U3bD6kvo7wJubQ8z", "1iHelgbMaB7G1bjMbABPRe"};
+    private int medCtr = 0;
+
     public static MoodInterpreter getInstance(){
         return instance;
     }
