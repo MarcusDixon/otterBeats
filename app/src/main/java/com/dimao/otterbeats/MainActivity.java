@@ -41,10 +41,7 @@ public class MainActivity extends Activity implements
 
     private Player mPlayer;
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 15459b0028b98283e7bbb07eef33485f5aaf4d43
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,11 +60,8 @@ public class MainActivity extends Activity implements
         addListenerOnButton4();
         addListenerOnButton5();
         addListenerOnButton6();
-<<<<<<< HEAD
-=======
         addListenerOnButton7();
->>>>>>> 15459b0028b98283e7bbb07eef33485f5aaf4d43
-
+        MoodInterpreter.getInstance(getApplicationContext());
         connect();
     }
 
@@ -96,9 +90,16 @@ public class MainActivity extends Activity implements
 
             @Override
             public void onClick(View arg0) {
-
-                mPlayer.skipToNext();
-
+                Log.d("Main", "hit skip");
+                String next = SPOTIFY_URI_BEG;
+                if(!MoodInterpreter.getInstance().getUpdate().equals("")) {
+                    String nextStation = SPOTIFY_URI_BEG + MoodInterpreter.getInstance().getUpdate();
+                    Log.d("station", nextStation);
+                    mPlayer.play(nextStation);
+                }
+                else {
+                    mPlayer.skipToNext();
+                }
             }
 
         });
@@ -186,8 +187,10 @@ public class MainActivity extends Activity implements
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     //elevate
+                    MoodInterpreter.getInstance(getApplicationContext()).setMode(2);
                 } else {
                     //maintain
+                    MoodInterpreter.getInstance(getApplicationContext()).setMode(1);
                 }
             }
         });
@@ -269,7 +272,7 @@ public class MainActivity extends Activity implements
                 //check emotional state
                 //pick next station or continue
                 String next = SPOTIFY_URI_BEG;
-                if(MoodInterpreter.getInstance().getUpdate() != "") {
+                if(!MoodInterpreter.getInstance().getUpdate().equals("")) {
                     String nextStation = SPOTIFY_URI_BEG + MoodInterpreter.getInstance().getUpdate();
                     mPlayer.play(nextStation);
                 }
