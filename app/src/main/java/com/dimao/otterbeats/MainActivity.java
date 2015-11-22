@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.ToggleButton;
 
 import com.spotify.sdk.android.player.Spotify;
@@ -41,10 +42,6 @@ public class MainActivity extends Activity implements
 
     private Player mPlayer;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 15459b0028b98283e7bbb07eef33485f5aaf4d43
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,10 +60,8 @@ public class MainActivity extends Activity implements
         addListenerOnButton4();
         addListenerOnButton5();
         addListenerOnButton6();
-<<<<<<< HEAD
-=======
         addListenerOnButton7();
->>>>>>> 15459b0028b98283e7bbb07eef33485f5aaf4d43
+
 
         connect();
     }
@@ -90,7 +85,7 @@ public class MainActivity extends Activity implements
 
     public void addListenerOnButton2() {
 
-        Button button = (Button) findViewById(R.id.skipButton);
+        ImageButton button = (ImageButton) findViewById(R.id.skipButton);
 
         button.setOnClickListener(new OnClickListener()  {
 
@@ -106,7 +101,7 @@ public class MainActivity extends Activity implements
 
     public void addListenerOnButton3() {
 
-        Button button = (Button) findViewById(R.id.prevButton);
+        ImageButton button = (ImageButton) findViewById(R.id.prevButton);
 
         button.setOnClickListener(new OnClickListener() {
 
