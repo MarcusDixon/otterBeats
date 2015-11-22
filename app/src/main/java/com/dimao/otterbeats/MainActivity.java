@@ -41,7 +41,6 @@ public class MainActivity extends Activity implements
 
     private Player mPlayer;
 
-    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,13 +59,14 @@ public class MainActivity extends Activity implements
         addListenerOnButton3();
         addListenerOnButton4();
         addListenerOnButton5();
+        addListenerOnButton6();
 
         connect();
     }
 
     public void addListenerOnButton1() {
 
-        button = (Button) findViewById(R.id.happyButton);
+        Button button = (Button) findViewById(R.id.happyButton);
 
         button.setOnClickListener(new OnClickListener() {
 
@@ -83,7 +83,7 @@ public class MainActivity extends Activity implements
 
     public void addListenerOnButton2() {
 
-        button = (Button) findViewById(R.id.skipButton);
+        Button button = (Button) findViewById(R.id.skipButton);
 
         button.setOnClickListener(new OnClickListener()  {
 
@@ -99,7 +99,7 @@ public class MainActivity extends Activity implements
 
     public void addListenerOnButton3() {
 
-        button = (Button) findViewById(R.id.prevButton);
+        Button button = (Button) findViewById(R.id.prevButton);
 
         button.setOnClickListener(new OnClickListener() {
 
@@ -242,8 +242,17 @@ public class MainActivity extends Activity implements
     @Override
     public void onPlaybackEvent(EventType eventType, PlayerState playerState) {
         Log.d("MainActivity", "Playback event received: " + eventType.name());
-        switch (eventType) {
+        switch (eventType.name()) {
             // Handle event type as necessary
+            case "TRACK_END":
+                //check emotional state
+                //pick next station or continue
+                String next = SPOTIFY_URI_BEG;
+                if(MoodInterpreter.getInstance().getUpdate() != "") {
+                    String nextStation = SPOTIFY_URI_BEG + MoodInterpreter.getInstance().getUpdate();
+                    mPlayer.play(nextStation);
+                }
+                break;
             default:
                 break;
         }

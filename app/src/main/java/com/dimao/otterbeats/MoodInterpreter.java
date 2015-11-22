@@ -1,6 +1,7 @@
 package com.dimao.otterbeats;
 
 import android.content.Context;
+import android.util.Log;
 
 /**
  * Created by harrisonoglesby on 11/21/15.
@@ -13,9 +14,9 @@ public class MoodInterpreter {
 
     private int mode = 0;
     //1 = keep mood      2 = elevate mood
-    private int initMood = 0;                   //initial mood
-    private int currentMood;                //recent mood
-    private int lastMood;                   //last mood
+    private int initMood = 1;                   //initial mood
+    private int currentMood = 1;                //recent mood
+    private int lastMood = 1;                   //last mood
 
     private String[] excitedStations = {"1R2iL5hYKBrKy32T58CUUI", "6Qf2sXTjlH3HH30Ijo6AUp"
                         , "1h90L3LP8kAJ7KGjCV2Xfd","1B9o7mER9kfxbmsRH9ko4z" ,"0kVaFpvoi0O4IbyJyEZckU"
@@ -85,6 +86,7 @@ public class MoodInterpreter {
     }
 
     public String getUpdate(){
+        Log.d("MoodInterpreter", "got update");
         String result = "";
         if(mode == 1){
             result = maintainMood();
@@ -97,7 +99,26 @@ public class MoodInterpreter {
 
     public String initialStation(){
         String choice = "";
-
+        switch (initMood){
+            case 1:
+                choice = pickExcitedStation();
+                break;
+            case 2:
+                choice = pickEngagedStation();
+                break;
+            case 3:
+                choice = pickBoredStations();
+                break;
+            case 4:
+                choice = pickFrustratedStations();
+                break;
+            case 5:
+                choice = pickCalmStations();
+                break;
+            default:
+                choice = pickExcitedStation();
+                break;
+        }
         return choice;
     }
 
@@ -108,16 +129,16 @@ public class MoodInterpreter {
         }
         else{
             if(lastMood == 2 || lastMood == 1){
-                //play more engaging station
+                choice = pickExcitedStation();
             }
             else if(lastMood == 5){
-                //play more calm station
+                choice = pickCalmStations();
             }
             else if(lastMood == 3){
-                //play more boring station
+                choice = pickBoredStations();
             }
             else if(lastMood == 4){
-                //play more frustrating song
+                choice = pickFrustratedStations();
             }
 
         }
@@ -132,11 +153,52 @@ public class MoodInterpreter {
             //keep playing same station
         }
         else if(lastMood == 3 && currentMood == 3){
-            //play more engaging station
+            choice = pickEngagedStation();
         }
         else if(lastMood == 4 && currentMood == 4){
-            //play more calming station
+            choice = pickCalmStations();
         }
         return choice;
+    }
+
+    private String pickExcitedStation(){
+        Log.d("MoodInterpreter", "pick Excited");
+        exCtr++;
+        if(exCtr >= excitedStations.length){
+            exCtr = 0;
+        }
+        return excitedStations[exCtr];
+    }
+    private String pickEngagedStation(){
+        Log.d("MoodInterpreter", "pick Engaged");
+        engCtr++;
+        if(engCtr >= engagedStations.length){
+            engCtr = 0;
+        }
+        return engagedStations[engCtr];
+    }
+    private String pickBoredStations(){
+        Log.d("MoodInterpreter", "pick Bored");
+        borCtr++;
+        if(borCtr >= boredStations.length){
+            borCtr = 0;
+        }
+        return boredStations[borCtr];
+    }
+    private String pickFrustratedStations(){
+        Log.d("MoodInterpreter", "pick Frustrated");
+        fruCtr++;
+        if(fruCtr >= frustratedStations.length){
+            fruCtr = 0;
+        }
+        return frustratedStations[fruCtr];
+    }
+    private String pickCalmStations(){
+        Log.d("MoodInterpreter", "pick Calm");
+        medCtr++;
+        if(medCtr >= calmStations.length){
+            medCtr = 0;
+        }
+        return calmStations[medCtr];
     }
 }
