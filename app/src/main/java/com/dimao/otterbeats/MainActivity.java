@@ -261,7 +261,21 @@ public class MainActivity extends Activity implements
     */
 
     void connect(){
-
+        String initEm = FakeEmotions.getInstance().getStartingEmotion();
+        int temp = 0;
+        switch (initEm){
+            case "EXCITEMENT": temp = 1;
+                break;
+            case "ENGAGEMENT": temp = 2;
+                break;
+            case "BOREDOM": temp = 3;
+                break;
+            case "FRUSTRATION": temp = 4;
+                break;
+            case "MEDITATION": temp = 5;
+                break;
+        }
+        MoodInterpreter.getInstance().setInitMood(temp);
     }
-
+    
 }

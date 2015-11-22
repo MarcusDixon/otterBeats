@@ -7,7 +7,7 @@ import android.content.Context;
  */
 public class MoodInterpreter {
 
-    public MoodInterpreter instance = null;
+    public static MoodInterpreter instance = null;
 
     private Context context = null;
 
@@ -17,11 +17,11 @@ public class MoodInterpreter {
     private int currentMood;                //recent mood
     private int lastMood;                   //last mood
 
-    public MoodInterpreter getInstance(){
+    public static MoodInterpreter getInstance(){
         return instance;
     }
 
-    public MoodInterpreter getInstance(Context ctx){
+    public static MoodInterpreter getInstance(Context ctx){
         if(instance == null){
             instance = new MoodInterpreter(ctx);
         }
@@ -60,7 +60,7 @@ public class MoodInterpreter {
         return currentMood;
     }
 
-    public String update(){
+    public String getUpdate(){
         String result = "";
         if(mode == 1){
             result = maintainMood();
@@ -73,7 +73,7 @@ public class MoodInterpreter {
 
     public String initialStation(){
         String choice = "";
-        
+
         return choice;
     }
 
